@@ -21,6 +21,7 @@ public class HospitalApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        //Ajouter des patients
     jpArepository.save(new Patient(null,"MOhamed",new Date(),true,2));
     jpArepository.save(new Patient(null,"younes",new Date(),false,1));
     jpArepository.save(new Patient(null,"kawtar",new Date(),true,8));
@@ -34,8 +35,9 @@ public class HospitalApplication implements CommandLineRunner {
 
        List<Patient> patientList=jpArepository.search("%M%");
        patientList.forEach(patient1 -> System.out.println(patient1));
+       //Mettre à jour un patient
        jpArepository.updatePatient(Long.valueOf(1),"jilali");
-
+       //supprimer un patien
        jpArepository.deleteById(Long.valueOf(1));
 
     }

@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Collection;
 import java.util.Date;
 @Entity @Table(name ="Xpatient")
 @AllArgsConstructor
@@ -17,6 +18,5 @@ public class Patient {
    private Date dateNaissanec ;
    private boolean malade ;
    private int score ;
-
 
 }
