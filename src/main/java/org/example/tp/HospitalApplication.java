@@ -8,6 +8,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.Date;
+import java.util.List;
 
 @SpringBootApplication
 public class HospitalApplication implements CommandLineRunner {
@@ -23,5 +24,19 @@ public class HospitalApplication implements CommandLineRunner {
     jpArepository.save(new Patient(null,"MOhamed",new Date(),true,2));
     jpArepository.save(new Patient(null,"younes",new Date(),false,1));
     jpArepository.save(new Patient(null,"kawtar",new Date(),true,8));
+    List<Patient> patients=jpArepository.findAll();
+       patients.forEach(patient -> System.out.println(patient));
+       // Chercher des patients
+       Patient patient=jpArepository.findById(Long.valueOf(1)).get();
+       System.out.println(".......................");
+       System.out.println(patient.getId()+" "+patient.getNom()+" "+patient.getDateNaissanec()
+               +" "+patient.getScore());
+
+       List<Patient> patientList=jpArepository.search("%M%");
+       patientList.forEach(patient1 -> System.out.println(patient1));
+       jpArepository.updatePatient(Long.valueOf(1),"jilali");
+
+       jpArepository.deleteById(Long.valueOf(1));
+
     }
 }
